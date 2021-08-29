@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Welcome to Yu Huang's GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/yuhuang3/yuhuang3.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
 
