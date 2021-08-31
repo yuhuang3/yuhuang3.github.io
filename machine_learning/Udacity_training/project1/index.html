@@ -4,6 +4,7 @@
 </div>
 <h3> Yu Huang </h3>
 
+<h2> 1. Business Understanding </h2>
 In this post I use the StackOverflow survey data from 2017 to 2020 to analyze the following trends over time. 
 
 <ul>
@@ -12,7 +13,27 @@ In this post I use the StackOverflow survey data from 2017 to 2020 to analyze th
     <li>What countries were most popular in each year?</li>
 </ul>
 
-<h2> 1. What languages were most popular in each year? </h2>
+<h2> 2. Data Understanding </h2>
+
+The [Stack Overflow Annual Developer Survey](https://insights.stackoverflow.com/survey) includes tens of thousands 
+responses from about 180 countries and territories. Each annual Developer Survey examines 
+all aspects of the developer experience from job search and career satisfaction to education and opinions on 
+open source software. In this post the surveys from 2017 to 2020 are selected to analyze the trend of programming 
+languages, databases, and countries since these surveys share the same fields of programming lanuages, databases, 
+and counties. 
+
+<h2> 3. Prepare Data </h2>
+
+For a given field such as programming languages, all of the missing data records are not counted in determining 
+their ranks so that missing data will not impact the result of trend analysis.
+
+<h2> 4. Modeling </h2>
+
+Machine learning modeling is not required in this blog for analyzing the trend over time. 
+
+<h2> Question 1. What languages were most popular in each year? </h2>
+
+<h3> Analysing Data </h3>
 
 The following tables show the top 10 programming languages in 2017, 2018, 2019, and 2020 
 respectively. 
@@ -38,30 +59,37 @@ respectively.
 <br>
 
 <p>
-The following tables and bar charts show the ranks of the programming languages 
+The following tables show the ranks of the programming languages 
 Python and Java in terms of percentages of users. 
 </p>
 
 <br>
-
 <img src="./images/python_ranks.png" width="30%" alt="python ranks">
 <br>
 <b> Table 5: Python ranks from 2017 to 2020 </b>
 <br>
 <br>
-<img src="./images/python_ranks_chart.png" width="30%" alt="python ranks chart">
-<br>
-<b> Figure 1: Python ranks from 2017 to 2020 </b>
-<br><br>
 <img src="./images/java_ranks.png" width="30%" alt="python ranks">
 <br>
 <b> Table 6: Java ranks from 2017 to 2020 </b>
+
+<h3> Visualizing Data </h3>
+<p>
+    The following bar charts show the ranks of the programming languages 
+    Python and Java in terms of percentages of users. 
+</p>
+    
+<br>
+<img src="./images/python_ranks_chart.png" width="30%" alt="python ranks chart">
+<br>
+<b> Figure 1: Python ranks from 2017 to 2020 </b>
 <br><br>
 <img src="./images/java_ranks_chart.png" width="30%" alt="python ranks chart">
 <br>
 <b> Figure 2: Java ranks from 2017 to 2020 </b>
 <br>
 
+<h3> Explaining the visualisation </h3>
 <p>
 It can be seen from the above tables and bar charts that Python becomes 
 more and more polular over time, while the popularity of Java decreases 
@@ -70,7 +98,9 @@ over time.
 
 <br>
 
-<h2> 2. What databases were most popular in each year? </h2>
+<h2> Question 2. What databases were most popular in each year? </h2>
+
+<h3> Analysing Data </h3>
 
 The following tables show the top 10 databases in 2017, 2018, 2019, and 2020 
 respectively. 
@@ -95,37 +125,48 @@ respectively.
 <br>
 
 <p>
-The following tables and bar charts show the ranks of the databases 
+The following tables show the ranks of the databases 
 Oracle and PostgreSql in terms of percentages of users. 
 </p>
 
 <br>
-
 <img src="./images/oracle_ranks.png" width="30%" alt="python ranks">
 <br>
 <b> Table 11: Oracle ranks from 2017 to 2020. </b>
+<br>
+<br>
+<img src="./images/postgresql_ranks.png" width="30%" alt="python ranks">
+<br>
+<b> Table 12: PostgreSql ranks from 2017 to 2020. </b>
+
+<h3> Visualizing Data </h3>
+<p>
+    The following bar charts show the ranks of the databases 
+    Oracle and PostgreSql in terms of percentages of users. 
+</p>
 <br>
 <img src="./images/oracle_ranks_chart.png" width="30%" alt="python ranks chart">
 <br>
 <b> Figure 3: Oracle ranks from 2017 to 2020. </b>
 <br>
-<img src="./images/postgresql_ranks.png" width="30%" alt="python ranks">
-<br>
-<b> Table 12: PostgreSql ranks from 2017 to 2020. </b>
+
 <br>
 <img src="./images/postgresql_ranks_chart.png" width="30%" alt="python ranks chart">
 <br>
 <b> Figure 4: PostgreSql ranks from 2017 to 2020. </b>
 <br>
+
+<h3> Explaining the visualisation </h3>
 <p>
-It can be seen from the above tables and bar charts that PostgreSql becomes 
+It can be seen from the above bar charts that PostgreSql becomes 
 more and more polular over time, while the popularity of Oracle decreases 
 over time.
 </p>
 
 <br>
 
-<h2> 3. What countries were most popular in each year? </h2>
+<h2> Question 3. What countries were most popular in each year? </h2>
+<h3> Analysing Data </h3>
 
 The following table show the top 10 countries in 2020.
 
@@ -133,7 +174,8 @@ The following table show the top 10 countries in 2020.
 
 <img src="./images/top_10_countries_2020.png" width="30%" alt="top 10 languages in 2017">
 <br>
-
+<br>
+<h3> Explaining the results </h3>
 <p>
 I observed that the top 10 countries remain the same in the last 4 years from 2017 to 2020.
 </p>
