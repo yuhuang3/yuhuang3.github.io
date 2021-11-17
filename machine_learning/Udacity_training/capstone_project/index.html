@@ -31,7 +31,7 @@ The rest of this article is arranged as follows:
 </ul>
 
 
-<h2> 1. Data Understanding </h2>
+<h2> 2. Data Understanding </h2>
 
 The dataset is obtained from Kaggle's website [1]. There are three files used in this article:
 train_data.csv: containing features related to patient, hospital and Length of stay (label)
@@ -109,13 +109,13 @@ This will have significant negative impact on prediction power.
 </section>
 
 <section class="container">
-<h2> 2. Data preparation </h2>
+<h2> 3. Data preparation </h2>
 
 With data understanding, The next step is to explore, 
 clean and transform the collected raw dataset into appropriate format 
 so that the transformed data can be effectively consumed by a target machine learning model.
 
-<h3>2.1. Handling missing data</h3>
+<h3>3.1. Handling missing data</h3>
 
 As shown in Figure 5, there are 113 missing data in the Bed Grade feature column 
 and 4,532 missing data in the City_Code_Patient feature column. 
@@ -136,24 +136,30 @@ train_data.isnull().sum()
 <center> Figure 5: Count of missing data. </center>
 <br>
 
-<h3>2.2 Dropping features (columns) without prediction power</h3>
+<h3>3.2 Dropping features (columns) without prediction power</h3>
 As described before, the case_id feature doesn't have prediction power, 
 so it is dropped in this project (see the DataCleaning class in data_preprocessing.py[6]).
 
-<h3>2.3 Categorical Encoding</h3>
-<h4>2.3.1. Categorical label encoding</h4>
+<h3>3.3 Categorical Encoding</h3>
+<h4>3.3.1. Categorical label encoding</h4>
 The label column Stay in this dataset is categorical. It must be transformed into numbers for categorical feature target encoding [7] and deep learning model. The LabelEncoder algorithm [8] is used for the transformation (see TargetEncoding and OneHotEncoding classes in data_preprocessing.py[6]).
-<h4>2.3.2 Categorical feature target encoding</h4>
+
+<h4>3.3.2 Categorical feature target encoding</h4>
 The advantage of target encoding [7] is that it does not increase the dimensionality of the dataset. It has been used in this project for transforming categorical features into numbers for ensemble machine learning models XGBoost [2] and Random Forest [3] because these models don't work well with one-hot encoding due to high dimensionality. See the TargetEncoding class in data_preprocessing.py[6].
-<h4>2.3.3. Categorical feature one-hot encoding</h4>
+
+<h4>3.3.3. Categorical feature one-hot encoding</h4>
 For comparison, the popular one-hot encoding method is used for transforming categorical features as well for deep learning model (see the OneHotEncoding class in data_preprocessing.py[6]).
-<h4>2.3.4. Other categorical feature transformation</h4>
+
+<h4>3.3.4. Other categorical feature transformation</h4>
 I noticed that the categorical Age feature (e.g. "21–30") has more prediction power once it is transformed into numbers because the order of ages makes difference. In this project each range of age (e.g., "21–30") has been transformed into an average number like (21+30)/2 = 25.5 (see the OneHotEncoding class in data_preprocessing.py[6]).
-<h3>2.4. Feature Normalization</h3>
+
+<h3>3.4. Feature Normalization</h3>
 The numeric features are normalized into the range of [-1, 1] for deep learning (see the FeatureNormorlization class in data_preprocessing.py[6]).
-<h3>2.5. Data Splitting</h3>
+
+<h3>3.5. Data Splitting</h3>
 Finally, the preprocessed dataset is divided into two subsets: one for model training and the other for model evaluation.
-<h3>2.6. Data Preprocessing Pipelines</h3>
+
+<h3>3.6. Data Preprocessing Pipelines</h3>
 The data preparation steps 2.1–2.5 have been combined into data preprocessing pipelines for convenience:
 <ul>
     <li>target_encoding_preprocessing</li>
@@ -167,7 +173,7 @@ See data_preprocessing.py for details [6].
 </section>
 
 <section class="container">
-<h2> 3. Modeling </h2>
+<h2> 4. Modeling </h2>
 
 After data preparation, we are ready for modeling. The main goals of modeling include:
 <ul>
@@ -175,7 +181,7 @@ After data preparation, we are ready for modeling. The main goals of modeling in
     <li>Train models and tune the hyper-parameters of models</li>
 </ul>
 
-<h3>3.1. Model Selection</h3>
+<h3>4.1. Model Selection</h3>
 This project addresses a classification issue because the label is categorical. 
 This is suitable for supervised machine learning classification models such as XGBoost [2], 
 Random Forest [3], deep learning multilayer perceptron (MLP) classifiers [4].
@@ -183,7 +189,7 @@ Because the data is in tabular format and the number of features is relatively s
 XGBoost and Random Forest are generally preferred compared with deep learning models.
 In this project XGBoost, Random Forest, and MLP classifiers are selected for experiments.
 
-<h3>3.2. Model Training and Hyper-Parameters Tuning</h3>
+<h3>4.2. Model Training and Hyper-Parameters Tuning</h3>
 
 Both XGBoost and Random Forest model training are performed with 10 folder cross validation. 
 Grid search is used for selecting the best combination of hyper-parameters. 
@@ -198,7 +204,7 @@ See the following functions in train_test_classifier.py:
 </section>
 
 <section class="container">
-<h2> 4. Model evaluation </h2>
+<h2> 5. Model evaluation </h2>
 
 Once different machine learning models have been trained, the performance of these models needs to be evaluated so that we can select the best model for deployment. 
 The classification accuracy and confusion matrix are used as the main evaluation metrics for this project. Refer to the following functions in train_test_classifier.py for details:
@@ -208,7 +214,7 @@ The classification accuracy and confusion matrix are used as the main evaluation
     <li>evaluate_dl_model</li>
 </ul>
 
-<h3>4.1. MLflow</h3>
+<h3>5.1. MLflow</h3>
 In order to effectively tracking model hyper-parameters and performance metrics, the MLflow tool [5] is used. In particular, I developed the function mlFlow() in train_test_classifier.py to combine the following activities into one procedure:
 <ul>
     <li>Loading training data</li>
@@ -294,7 +300,7 @@ to increase accuracy score.
 </section>
 
 <section class="container">
-<h2> 5. Deployment </h2>
+<h2> 6. Deployment </h2>
 
 Once the best model has been identified for deployment in model evaluation, 
 we can move to the final step to deploy the identified model into a production environment. 
@@ -356,7 +362,7 @@ result_df.transpose().head(100)
 </section>
 
 <section class="container">
-<h2> Summary </h2>
+<h2> 7. Summary </h2>
 This article presented how to use different machine learning models to predict the hospitalized 
 time for Covid-19 patients using a challenging dataset from Kaggle [1]. 
 This dataset is difficult in that it is a multi-classes single label case and the dataset is 
