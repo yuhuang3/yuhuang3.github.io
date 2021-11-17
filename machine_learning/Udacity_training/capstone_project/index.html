@@ -30,10 +30,75 @@ train_data_dictionary.csv: containing the information of the features in train a
 As shown in Figure 1, there are total 17 features and 1 label column (Stay) in this dataset.
 
 <br>
-<img src="./images/covid19_data_transposed_view.png" width="50%" alt="top 10 languages in 2017">
+<img src="./images/covid19_data_transposed_view.png" width="70%" alt="top 10 languages in 2017">
+<br>
+<center> Figure 1: Transposed view of the train dataset. </center>
+<br>
+<p>
+    Figure 2 shows the distribution of the following numeric features:
+<ul>
+    <li>case_id</li>
+    <li>Hospital_code</li>
+    <li>City_Code_Hospital</li>
+    <li>Available Extra Rooms in Hospital</li>
+    <li>Bed Grade</li>
+    <li>patientid</li>
+    <li>City_Code_Patient</li>
+    <li>Visitors with Patient</li>
+    <li>Admission_Deposit</li>
+ </ul>   
+    It can be seen that the case_id feature values are uniformly distributed 
+    over bins because they are unique sequential numbers. 
+    This feature can be dropped due to lack of prediction power.    
+</p>
+
+<br>
+<img src="./images/numeric_features_distribution.png" width="50%" alt="top 10 languages in 2017">
+<br>
+<center> Figure 2: Distribution of numeric features. </center>
+<br>
+
+<p>
+    Figure 3 shows the patient visit distribution. 
+    We can see that many patients revisited the hospital many times 
+    (from 10 up to 50). So patient IDs are important in prediction.
+</p>
+
+<br>
+<img src="./images/patient_visits_distribution.png" width="50%" alt="top 10 languages in 2017">
+<br>
+<center> Figure 3: Patient visit distribution. </center>
+<br>
+
+<p>
+    Figure 4 shows the distribution of the categorical features and label column:
+<ul>
+    <li>Hospital type code</li>
+    <li>Hospital region code</li>
+    <li>Department</li>
+    <li>Ward Type</li>
+    <li>Ward Facility Code</li>
+    <li>Type of Admission</li>
+    <li>Severity of Illness</li>
+    <li>Age</li>
+    <li>Stay (Label)</li>
+</ul>
+
+We can see that the distribution of the labels is significantly skewed to 
+the right. In other words, the data is not balanced. 
+There are very few data samples in the categories from '41–50' to '61–70'. 
+This will have significant negative impact on prediction power.
+</p>
+
+<br>
+<img src="./images/categorical_features_distribution.png" width="50%" alt="top 10 languages in 2017">
+<br>
+<center> Figure 4: Distribution of categorical features. </center>
 <br>
 
 <h2> 2. Data preparation </h2>
+
+
 
 <h2> 3. Modeling </h2>
 
