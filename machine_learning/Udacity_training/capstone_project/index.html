@@ -278,9 +278,83 @@ to increase accuracy score.
 
 <h2> 5. Deployment </h2>
 
+Once the best model has been identified for deployment in model evaluation, 
+we can move to the final step to deploy the identified model into a production environment. 
+One common deployment method is to deploy the model as a Web service on a server, 
+which can be called by other components in a target production system to predict results.
+<br><br>
+In order to support deployment, both the selected trained model (e.g., XGBoost) and the 
+related encoding objects (e.g., LabelEncoder object, TargetEncoder objects) are saved into 
+Python pickle files after model training. These saved encoding objects and model are to 
+be loaded back for prediction in deployment.
+<br><br>
+As an example, the following code loads in thetest_data.csv for prediction in deployment. 
+Figure 11 shows the transposed view of the loaded test dataset. Note that this dataset 
+does not have the label column Stay.
+
+<p>
+    test_data = load_data('test_data.csv') <br>
+    print(test_data.shape)<br>
+    test_data.transpose().head(100)
+</p>
+
+<br>
+<img src="./images/test_data.png" width="30%" alt="">
+<br>
+<center> Figure 11: Test data before prediction.</center>
+<br>
+
+The code below does the following:
+<ul>
+    <li>loading the saved model and encoding objects</li>
+    <li>using them to predict the number of hospitalized days for each of the patients 
+        in the test dataset</li>
+    <li>showing the first 100 records in the resulting DataFrame with the features and 
+        predicted labels (the Stay column) (see Figure 12)</li>
+    <li>displaying the distribution of the predicted labels.</li>
+</ul>
+
+We can see from Figure 4 and Figure 13 that the distribution pattern of the predicted labels 
+in Figure 13 is very similar to the distribution pattern of the labels Figure 4.
+
+<p>
+label_encoder, target_encoders = load_encoders()<br>
+result_df = predict(label_encoder, target_encoders, test_data_file='test_data.csv')<br>
+result_df['Stay'].value_counts().plot(kind='bar')<br>
+result_df.transpose().head(100)
+</p>
+
+<br>
+<img src="./images/prediction_results.png" width="70%" alt="">
+<br>
+<center> Figure 12: Test data with predicted labels.</center>
+<br>
+<br><br>
+<br>
+<img src="./images/predicted_labels_distribution.png" width="30%" alt="">
+<br>
+<center> Figure 13: Distribution of predicted labels.</center>
+<br>
+
 <h2> Summary </h2>
+This article presented how to use different machine learning models to predict the hospitalized 
+time for Covid-19 patients using a challenging dataset from Kaggle [1]. 
+This dataset is difficult in that it is a multi-classes single label case and the dataset is 
+significantly skewed.
+<br><br>
+The experimental results show that using XGBoost with target encoding achieved the best performance 
+in prediction accuracy (42.4%). This result is competitive to the results described in Kaggle [1].
 
 <h2> References </h2>
-
+<ol>
+    <li><a href="https://www.kaggle.com/nehaprabhavalkar/av-healthcare-analytics-ii">Covid-19 dataset in Kaggle</a></li>
+    <li><a href="https://xgboost.readthedocs.io/en/latest/">XGBoost</a></li>
+    <li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">Random Forest Classifier</a></li>
+    <li><a href="https://keras.io/guides/sequential_model/">Keras sequential model</a></li>
+    <li><a href="https://mlflow.org/docs/latest/index.html">MLflow</a></li>
+    <li><a href="https://github.com/yuhuang3/machine-learning/tree/master/Udacity/capstone_projec">Source code in Github</a></li>
+    <li><a href="https://contrib.scikit-learn.org/category_encoders/targetencoder.html">Target encoder</a></li>
+    <li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html">Label encoder</a></li>
+</ol>
 
 
