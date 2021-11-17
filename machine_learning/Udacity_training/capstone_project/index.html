@@ -1,10 +1,21 @@
-<h1> Predicting Hospitalized Time of Covid-19 Patients</h1>
-<h2> Supervised Machine Learning in Healthcare </h2>
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Yu Huang's Web Site</title>  
+    </head>
+<body>  
+    <header>
+    <h1> Predicting Hospitalized Time of Covid-19 Patients</h1>
+    <h2> Supervised Machine Learning in Healthcare </h2>
+    </header>
 <div>
     <img src="./images/scene.jpg" width="50%" alt="Yu"> 
 </div>
 <h3> Yu Huang </h3>
 
+<section class="container">
 <h2> 1. Intruduction </h2>
 <p>
 The outbreak of Covid-19 pandemic in 2020 caused tremendous equipment, materials deficiency and beds shortage problems in healthcare system across the U.S. [1]. The hospitals not only need to take care of the routine patients, but also need to take care of the sudden increased Covid-19 patients. A good planning and management of a hospital system becomes very important.
@@ -95,7 +106,9 @@ This will have significant negative impact on prediction power.
 <br>
 <center> Figure 4: Distribution of categorical features. </center>
 <br>
+</section>
 
+<section class="container">
 <h2> 2. Data preparation </h2>
 
 With data understanding, The next step is to explore, 
@@ -151,8 +164,9 @@ The data preparation steps 2.1–2.5 have been combined into data preprocessing 
 <br>
 
 See data_preprocessing.py for details [6].
+</section>
 
-
+<section class="container">
 <h2> 3. Modeling </h2>
 
 After data preparation, we are ready for modeling. The main goals of modeling include:
@@ -181,7 +195,9 @@ See the following functions in train_test_classifier.py:
     <li>build_rf_model</li>
     <li>build_deeplearning_model</li>
 </ul>
+</section>
 
+<section class="container">
 <h2> 4. Model evaluation </h2>
 
 Once different machine learning models have been trained, the performance of these models needs to be evaluated so that we can select the best model for deployment. 
@@ -275,7 +291,9 @@ I tried to remove some of the features with low feature importance
 (e.g., Hospital_region_code, City_Code_Hospital, etc.) and features with very small 
 correlation coefficients (e.g., City_Code_Hospital) and observed that it didn't help 
 to increase accuracy score.
+</section>
 
+<section class="container">
 <h2> 5. Deployment </h2>
 
 Once the best model has been identified for deployment in model evaluation, 
@@ -335,7 +353,9 @@ result_df.transpose().head(100)
 <br>
 <center> Figure 13: Distribution of predicted labels.</center>
 <br>
+</section>
 
+<section class="container">
 <h2> Summary </h2>
 This article presented how to use different machine learning models to predict the hospitalized 
 time for Covid-19 patients using a challenging dataset from Kaggle [1]. 
@@ -344,7 +364,9 @@ significantly skewed.
 <br><br>
 The experimental results show that using XGBoost with target encoding achieved the best performance 
 in prediction accuracy (42.4%). This result is competitive to the results described in Kaggle [1].
+</section>
 
+<section class="container">
 <h2> References </h2>
 <ol>
     <li><a href="https://www.kaggle.com/nehaprabhavalkar/av-healthcare-analytics-ii">Covid-19 dataset in Kaggle</a></li>
@@ -356,5 +378,7 @@ in prediction accuracy (42.4%). This result is competitive to the results descri
     <li><a href="https://contrib.scikit-learn.org/category_encoders/targetencoder.html">Target encoder</a></li>
     <li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html">Label encoder</a></li>
 </ol>
+</section>
 
-
+</body>
+</html>
