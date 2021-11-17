@@ -13,7 +13,7 @@
     <h3> <center>Yu Huang</center> </h3>
     </header>
 <div>
-    <img src="./images/scene.jpg" width="50%" alt="Yu"> 
+    <img src="./images/scene.jpg" width="50%" alt="scene" class="center"> 
 </div>
 
 <section class="container">
@@ -42,7 +42,7 @@ train_data_dictionary.csv: containing the information of the features in train a
 As shown in Figure 1, there are total 17 features and 1 label column (Stay) in this dataset.
 
 <br>
-<img src="./images/covid19_data_transposed_view.png" width="70%" alt="top 10 languages in 2017">
+<img src="./images/covid19_data_transposed_view.png" width="70%" class="center">
 <br>
 <center> Figure 1: Transposed view of the train dataset. </center>
 <br>
@@ -65,7 +65,7 @@ As shown in Figure 1, there are total 17 features and 1 label column (Stay) in t
 </p>
 
 <br>
-<img src="./images/numeric_features_distribution.png" width="70%" alt="top 10 languages in 2017">
+<img src="./images/numeric_features_distribution.png" width="70%" class="center">
 <br>
 <center> Figure 2: Distribution of numeric features. </center>
 <br>
@@ -77,7 +77,7 @@ As shown in Figure 1, there are total 17 features and 1 label column (Stay) in t
 </p>
 
 <br>
-<img src="./images/patient_visits_distribution.png" width="40%" alt="top 10 languages in 2017">
+<img src="./images/patient_visits_distribution.png" width="40%" class="center">
 <br>
 <center> Figure 3: Patient visit distribution. </center>
 <br>
@@ -103,7 +103,7 @@ This will have significant negative impact on prediction power.
 </p>
 
 <br>
-<img src="./images/categorical_features_distribution.png" width="70%" alt="top 10 languages in 2017">
+<img src="./images/categorical_features_distribution.png" width="70%" class="center">
 <br>
 <center> Figure 4: Distribution of categorical features. </center>
 <br>
@@ -132,7 +132,7 @@ train_data.isnull().sum()
 </p>
 
 <br>
-<img src="./images/missing_data_count.png" width="30%" alt="top 10 languages in 2017">
+<img src="./images/missing_data_count.png" width="30%" class="center">
 <br>
 <center> Figure 5: Count of missing data. </center>
 <br>
@@ -232,7 +232,7 @@ As an example, the following mlFlow() function call produces the results
 </p>
 
 <br>
-<img src="./images/xgboost_confusion_matrix.png" width="70%" alt="top 10 languages in 2017">
+<img src="./images/xgboost_confusion_matrix.png" width="70%" class="center">
 <br>
 <center> Figure 6: Confusion Matrix for a XGBoost model.</center>
 <br>
@@ -251,7 +251,7 @@ We can see that XGBoost has the best performance in accuracy for the given datas
 so we can select it for deployment if its performance meets business requirements.
 
 <br>
-<img src="./images/mlflow.png" width="70%" alt="top 10 languages in 2017">
+<img src="./images/mlflow.png" width="70%" class="center">
 <br>
 <center> Figure 7: MLflow UI screenshot.</center>
 <br>
@@ -265,7 +265,7 @@ noticed that the accuracy score was increased to about 63%.
 Figure 8 shows the corresponding confusion matrix from a trained Random Forest model.
 
 <br>
-<img src="./images/rf_filtered_confusion_matrix.png" width="45%" alt="">
+<img src="./images/rf_filtered_confusion_matrix.png" width="45%" class="center">
 <br>
 <center> Figure 8: Confusion Matrix for a Random Forest model with two label categories.</center>
 <br>
@@ -273,7 +273,7 @@ In order to understand how different features impacted the prediction,
 Figure 9 shows the feature importance produced by a trained Random Forest model.
 
 <br>
-<img src="./images/features_importance.png" width="40%" alt="">
+<img src="./images/features_importance.png" width="40%" class="center">
 <br>
 <center> Figure 9: Feature importance produced by a Random Forest model.</center>
 <br>
@@ -282,7 +282,7 @@ I also looked into the correlations between the features and the target labels
 as shown in Figure 10.
 
 <br>
-<img src="./images/correlation_analysis.png" width="30%" alt="">
+<img src="./images/correlation_analysis.png" width="30%" class="center">
 <br>
 <center> Figure 10: Features and target label (Stay) correlation coefficients.</center>
 <br>
@@ -324,7 +324,7 @@ does not have the label column Stay.
 </p>
 
 <br>
-<img src="./images/test_data.png" width="70%" alt="">
+<img src="./images/test_data.png" width="70%" class="center">
 <br>
 <center> Figure 11: Test data before prediction.</center>
 <br>
@@ -350,13 +350,13 @@ result_df.transpose().head(100)
 </p>
 
 <br>
-<img src="./images/prediction_results.png" width="70%" alt="">
+<img src="./images/prediction_results.png" width="70%" class="center">
 <br>
 <center> Figure 12: Test data with predicted labels.</center>
 <br>
 <br><br>
 <br>
-<img src="./images/predicted_labels_distribution.png" width="30%" alt="">
+<img src="./images/predicted_labels_distribution.png" width="30%" class="center">
 <br>
 <center> Figure 13: Distribution of predicted labels.</center>
 <br>
