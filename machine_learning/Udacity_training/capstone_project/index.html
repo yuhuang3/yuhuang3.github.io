@@ -153,11 +153,128 @@ The data preparation steps 2.1–2.5 have been combined into data preprocessing 
 See data_preprocessing.py for details [6].
 
 
-
-
 <h2> 3. Modeling </h2>
 
+After data preparation, we are ready for modeling. The main goals of modeling include:
+<ul>
+    <li>Identify potential machine learning models</li>
+    <li>Train models and tune the hyper-parameters of models</li>
+</ul>
+
+<h3>3.1. Model Selection</h3>
+This project addresses a classification issue because the label is categorical. 
+This is suitable for supervised machine learning classification models such as XGBoost [2], 
+Random Forest [3], deep learning multilayer perceptron (MLP) classifiers [4].
+Because the data is in tabular format and the number of features is relatively small, 
+XGBoost and Random Forest are generally preferred compared with deep learning models.
+In this project XGBoost, Random Forest, and MLP classifiers are selected for experiments.
+
+<h3>3.2. Model Training and Hyper-Parameters Tuning</h3>
+
+Both XGBoost and Random Forest model training are performed with 10 folder cross validation. 
+Grid search is used for selecting the best combination of hyper-parameters. 
+Cross validation is also used for training the deep learning model. 
+See the following functions in train_test_classifier.py:
+
+<ul>
+    <li>build_xgboost_model</li>
+    <li>build_rf_model</li>
+    <li>build_deeplearning_model</li>
+</ul>
+
 <h2> 4. Model evaluation </h2>
+
+Once different machine learning models have been trained, the performance of these models needs to be evaluated so that we can select the best model for deployment. 
+The classification accuracy and confusion matrix are used as the main evaluation metrics for this project. Refer to the following functions in train_test_classifier.py for details:
+<ul>
+    <li>evaluate_xgboost_model</li>
+    <li>evaluate_rf_model</li>
+    <li>evaluate_dl_model</li>
+</ul>
+
+<h3>4.1. MLflow</h3>
+In order to effectively tracking model hyper-parameters and performance metrics, the MLflow tool [5] is used. In particular, I developed the function mlFlow() in train_test_classifier.py to combine the following activities into one procedure:
+<ul>
+    <li>Loading training data</li>
+    <li>Preprocessing data</li>
+    <li>Training model</li>
+    <li>Evaluating model</li>
+</ul>
+
+As an example, the following mlFlow() function call produces the results 
+(e.g., the confusion matrix in Figure 6) for a XGBoost model.
+
+<p>
+    target_encoders, label_encoder = mlFlow()
+</p>
+
+<br>
+<img src="./images/xgboost_confusion_matrix.png" width="30%" alt="top 10 languages in 2017">
+<br>
+<center> Figure 6: Confusion Matrix for a XGBoost model.</center>
+<br>
+The confusion matrix in Figure 6 shows that the more data the better the prediction results. 
+For example, the maximum number 14,429 of true positives is in the category of 21–30.
+
+Figure 7 shows the results of four model evaluations:
+<ul>
+    <li>XGBoost with target encoding</li>
+    <li>Random Forest with target encoding</li>
+    <li>MLP with target encoding</li>
+    <li>MLP with one-hot encoding</li>
+</ul>
+
+We can see that XGBoost has the best performance in accuracy for the given dataset and 
+so we can select it for deployment if its performance meets business requirements.
+
+<br>
+<img src="./images/mlflow.png" width="30%" alt="top 10 languages in 2017">
+<br>
+<center> Figure 7: MLflow UI screenshot.</center>
+<br>
+As shown in Figure 7, the best accuracy score is only about 42.4%. 
+This is because there are too little data in the majority of the labeled categories 
+such as the following ranges: 41-50, from 61-70 all way up to more than 100.
+<br><br>
+The accuracy score will increase if more data can be collected to balance the dataset. 
+As an experiment, I selected only the data samples in the categories of 11-20 and 21-30 and 
+noticed that the accuracy score was increased to about 63%. 
+Figure 8 shows the corresponding confusion matrix from a trained Random Forest model.
+
+<br>
+<img src="./images/rf_filtered_confusion_matrix.png" width="30%" alt="">
+<br>
+<center> Figure 8: Confusion Matrix for a Random Forest model with two label categories.</center>
+<br>
+In order to understand how different features impacted the prediction, 
+Figure 9 shows the feature importance produced by a trained Random Forest model.
+
+<br>
+<img src="./images/features_importance.png" width="30%" alt="">
+<br>
+<center> Figure 9: Feature importance produced by a Random Forest model.</center>
+<br>
+
+I also looked into the correlations between the features and the target labels 
+as shown in Figure 10.
+
+<br>
+<img src="./images/correlation_analysis.png" width="30%" alt="">
+<br>
+<center> Figure 10: Features and target label (Stay) correlation coefficients.</center>
+<br>
+
+It is tricky to use correlation coefficient to determine the strength of relationship 
+between a feature and the target because the correlation coefficient only indicates 
+linear relationship. A feature (e.g., patientid) with very low correlation coefficient 
+does not necessary indicate that there is no relationship between the feature and the target. 
+For example, the patient id has a very small correlation coefficient, 
+but its feature importance is high.
+<br><br>
+I tried to remove some of the features with low feature importance 
+(e.g., Hospital_region_code, City_Code_Hospital, etc.) and features with very small 
+correlation coefficients (e.g., City_Code_Hospital) and observed that it didn't help 
+to increase accuracy score.
 
 <h2> 5. Deployment </h2>
 
