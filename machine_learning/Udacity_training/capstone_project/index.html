@@ -33,13 +33,16 @@ The rest of this article is arranged as follows:
 
 
 <h2> 2. Data Understanding </h2>
-
+<p>
 The dataset is obtained from Kaggle's website [1]. There are three files used in this article:
-train_data.csv: containing features related to patient, hospital and Length of stay (label)
-test_data.csv: containing features related to patient, hospital. Need to predict the "length" of stay for each case id
-train_data_dictionary.csv: containing the information of the features in train and test files.
-
+<ul>
+    <li>train_data.csv: containing features related to patient, hospital and Length of stay (label)</li>
+    <li>test_data.csv: containing features related to patient, hospital. Need to predict the "length" of stay for each case id</li>
+    <li>train_data_dictionary.csv: containing the information of the features in train and test files.</li>
+</ul>
+<br>
 As shown in Figure 1, there are total 17 features and 1 label column (Stay) in this dataset.
+</p>
 
 <br>
 <img src="./images/covid19_data_transposed_view.png" width="70%" class="center">
@@ -111,13 +114,14 @@ This will have significant negative impact on prediction power.
 
 <section class="container">
 <h2> 3. Data preparation </h2>
-
+<p>
 With data understanding, The next step is to explore, 
 clean and transform the collected raw dataset into appropriate format 
 so that the transformed data can be effectively consumed by a target machine learning model.
+</p>
 
 <h3>3.1. Handling missing data</h3>
-
+<p>
 As shown in Figure 5, there are 113 missing data in the Bed Grade feature column 
 and 4,532 missing data in the City_Code_Patient feature column. 
 The total number of missing data is relatively small (total of 4,645) 
@@ -126,7 +130,7 @@ In this case we can either drop the rows with missing data or replace missing da
 I choose to replace the missing data with 0 in order to be able to predict results 
 for the test_data dataset with missing feature values in deployment. 
 Refer to the DataCleaning class in data_preprocessing.py for details [6].
-
+</p>
 <p>
 train_data.isnull().sum()
 </p>
@@ -138,15 +142,24 @@ train_data.isnull().sum()
 <br>
 
 <h3>3.2 Dropping features (columns) without prediction power</h3>
+<p>
 As described before, the case_id feature doesn't have prediction power, 
 so it is dropped in this project (see the DataCleaning class in data_preprocessing.py[6]).
+</p>
 
 <h3>3.3 Categorical Encoding</h3>
 <h4>3.3.1. Categorical label encoding</h4>
-The label column Stay in this dataset is categorical. It must be transformed into numbers for categorical feature target encoding [7] and deep learning model. The LabelEncoder algorithm [8] is used for the transformation (see TargetEncoding and OneHotEncoding classes in data_preprocessing.py[6]).
+<p>
+The label column Stay in this dataset is categorical. It must be transformed into numbers 
+for categorical feature target encoding [7] and deep learning model. 
+The LabelEncoder algorithm [8] is used for the transformation 
+(see TargetEncoding and OneHotEncoding classes in data_preprocessing.py[6]).
+</p>
 
 <h4>3.3.2 Categorical feature target encoding</h4>
+<p>
 The advantage of target encoding [7] is that it does not increase the dimensionality of the dataset. It has been used in this project for transforming categorical features into numbers for ensemble machine learning models XGBoost [2] and Random Forest [3] because these models don't work well with one-hot encoding due to high dimensionality. See the TargetEncoding class in data_preprocessing.py[6].
+</p>
 
 <h4>3.3.3. Categorical feature one-hot encoding</h4>
 For comparison, the popular one-hot encoding method is used for transforming categorical features as well for deep learning model (see the OneHotEncoding class in data_preprocessing.py[6]).
