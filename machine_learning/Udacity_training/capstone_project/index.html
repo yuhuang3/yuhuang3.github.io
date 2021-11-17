@@ -65,7 +65,7 @@ As shown in Figure 1, there are total 17 features and 1 label column (Stay) in t
 </p>
 
 <br>
-<img src="./images/patient_visits_distribution.png" width="50%" alt="top 10 languages in 2017">
+<img src="./images/patient_visits_distribution.png" width="40%" alt="top 10 languages in 2017">
 <br>
 <center> Figure 3: Patient visit distribution. </center>
 <br>
@@ -97,6 +97,61 @@ This will have significant negative impact on prediction power.
 <br>
 
 <h2> 2. Data preparation </h2>
+
+With data understanding, The next step is to explore, 
+clean and transform the collected raw dataset into appropriate format 
+so that the transformed data can be effectively consumed by a target machine learning model.
+
+<h3>2.1. Handling missing data</h3>
+
+As shown in Figure 5, there are 113 missing data in the Bed Grade feature column 
+and 4,532 missing data in the City_Code_Patient feature column. 
+The total number of missing data is relatively small (total of 4,645) 
+compared with the dataset size of 318,438 rows. 
+In this case we can either drop the rows with missing data or replace missing data with 0. 
+I choose to replace the missing data with 0 in order to be able to predict results 
+for the test_data dataset with missing feature values in deployment. 
+Refer to the DataCleaning class in data_preprocessing.py for details [6].
+
+<p>
+train_data.isnull().sum()
+</p>
+
+<br>
+<img src="./images/missing_data_count.png" width="50%" alt="top 10 languages in 2017">
+<br>
+<center> Figure 5: Count of missing data. </center>
+<br>
+
+<h3>2.2 Dropping features (columns) without prediction power</h3>
+As described before, the case_id feature doesn't have prediction power, 
+so it is dropped in this project (see the DataCleaning class in data_preprocessing.py[6]).
+
+<h3>2.3 Categorical Encoding</h3>
+<h4>2.3.1. Categorical label encoding</h4>
+The label column Stay in this dataset is categorical. It must be transformed into numbers for categorical feature target encoding [7] and deep learning model. The LabelEncoder algorithm [8] is used for the transformation (see TargetEncoding and OneHotEncoding classes in data_preprocessing.py[6]).
+<h4>2.3.2 Categorical feature target encoding</h4>
+The advantage of target encoding [7] is that it does not increase the dimensionality of the dataset. It has been used in this project for transforming categorical features into numbers for ensemble machine learning models XGBoost [2] and Random Forest [3] because these models don't work well with one-hot encoding due to high dimensionality. See the TargetEncoding class in data_preprocessing.py[6].
+<h4>2.3.3. Categorical feature one-hot encoding</h4>
+For comparison, the popular one-hot encoding method is used for transforming categorical features as well for deep learning model (see the OneHotEncoding class in data_preprocessing.py[6]).
+<h4>2.3.4. Other categorical feature transformation</h4>
+I noticed that the categorical Age feature (e.g. "21–30") has more prediction power once it is transformed into numbers because the order of ages makes difference. In this project each range of age (e.g., "21–30") has been transformed into an average number like (21+30)/2 = 25.5 (see the OneHotEncoding class in data_preprocessing.py[6]).
+<h3>2.4. Feature Normalization</h3>
+The numeric features are normalized into the range of [-1, 1] for deep learning (see the FeatureNormorlization class in data_preprocessing.py[6]).
+<h3>2.5. Data Splitting</h3>
+Finally, the preprocessed dataset is divided into two subsets: one for model training and the other for model evaluation.
+<h3>2.6. Data Preprocessing Pipelines</h3>
+The data preparation steps 2.1–2.5 have been combined into data preprocessing pipelines for convenience:
+<ul>
+    <li>target_encoding_preprocessing</li>
+    <li>target_encoding_preprocessing_for_prediction</li>
+    <li>onehot_encoding_preprocessing</li>
+    <li>onehot_encoding_preprocessing_for_prediction</li>
+</ul>
+<br>
+
+See data_preprocessing.py for details [6].
+
 
 
 
