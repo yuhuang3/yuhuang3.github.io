@@ -11,7 +11,7 @@ body
 
 input
 {
-        font-family: 'Open Sans', sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-size:16px;
         padding: 7px;
         outline: 0;
@@ -95,7 +95,7 @@ header h1
 
 header p
 {
-        font-family: 'Open Sans', sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-size:16px;
         color: #4A463B;
         margin-left:132px;
@@ -119,7 +119,7 @@ nav ul li
 
 nav ul li a
 {
-        font-family: 'Open Sans', sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
         text-transform:uppercase;
         transition: all .25s ease;
 }
@@ -175,7 +175,7 @@ nav ul li a:hover
 
 #boxcontent article h3
 {
-        font-family: 'Open Sans', sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-size:20px;
         margin-bottom:10px;
         margin-left:75px;
@@ -189,14 +189,14 @@ nav ul li a:hover
 #boxcontent article p
 {
         line-height:25px;
-        font-family: 'Open Sans', sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
         margin-left:75px;
 }
 
 #slider_content1, #slider_content2, #slider_content3
 {
         line-height: 25px;
-        font-family: 'Open Sans', sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
         width:350px;
         position:absolute;
         top:15%;
@@ -265,7 +265,7 @@ nav ul li a:hover
         height:70px;
         background-color:#e56038;
         position:relative;
-        font-family: 'Open Sans', sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
         color:#fff;
         font-size:18px;
 }
@@ -294,7 +294,7 @@ nav ul li a:hover
 #four_columns, #text_columns
 {
         line-height:25px;
-        font-family: 'Open Sans', sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
         clear:both;
         width:auto;
         max-width:900px;
@@ -431,7 +431,7 @@ footer .wrapper
 
 footer .wrapper .column
 {
-        font-family: 'Open Sans', sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
         color:#ababab;
         float:left;
         width:280px;
@@ -498,7 +498,7 @@ footer .wrapper .column h4
 }
 #copyright .wrapper
 {
-        font-family: 'Open Sans', sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
         padding-top:25px;
         color: #5e5e5e;
         font-size:14px;
