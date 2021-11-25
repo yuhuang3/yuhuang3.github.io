@@ -136,7 +136,7 @@ nav ul li a
 
 nav ul li a:hover
 {
-        color:#E56038;
+        color:#94ccd6;
 }
 
 #mobileMenu
@@ -151,13 +151,13 @@ nav ul li a:hover
 #mobileMenu ul li
 {
         display:block;
-        background-color: #E56038;
+        background-color: #94ccd6;
         color: #fff;
         padding: 12px 0;
         letter-spacing: 0.1em;
         text-align: center;
         text-transform: uppercase;
-        border-bottom: 1px solid #CC5836;
+        border-bottom: 1px solid #94ccd6;
 }
 
 .toggleMobile
