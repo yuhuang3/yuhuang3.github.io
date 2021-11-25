@@ -238,8 +238,8 @@ nav ul li a:hover
 {
         padding:7px 14px;
         border: 1px solid #0760c5;
-        background-image: linear-gradient(bottom, #E56038 0%, #ff8c66 100%);
-        background-image: linear-gradient(to bottom, #ff8c66 0%, #E56038 100%);
+        background-image: linear-gradient(bottom, #0760c5 0%, #6a98cc 100%);
+        background-image: linear-gradient(to bottom, #5a82af 0%, #2167b8 100%);
         background-color: #3877e5;
         color: #EBE8DE;
         text-shadow: 1px 1px 0px #3877e5;
