@@ -87,10 +87,18 @@ header
 
 header h1
 {
-        margin:35px 0 0 0;
+       /* margin:35px 0 0 0; */
         font-size:55px;
         color:#3877e5;
+        text-align: center;
         font-family: Arial, Helvetica, sans-serif;
+}
+
+header h3
+{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:30px;
+        color: #1144ec;
 }
 
 header p
