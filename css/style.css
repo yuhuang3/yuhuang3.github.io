@@ -355,7 +355,8 @@ nav ul li a:hover
 
 #text_columns article.column1, #text_columns .column2
 { 
-        margin: 70px 0;
+       /* margin: 70px 0; Yu */
+        margin: 70px;
         font-size:14px;
         float:left;
         width:auto;
@@ -364,7 +365,8 @@ nav ul li a:hover
 
 #text_columns .column2
 {
-        margin: 120px 0;
+       /* margin: 120px 0; Yu */
+        margin: 70px; 
 }
 
 .row
