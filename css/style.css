@@ -372,8 +372,8 @@ nav ul li a:hover
 #img_columns article.column1, #img_columns .column2
 { 
         margin: 70px 0px;
-      /*  font-size:14px; */
-        float:left;
+      /*  font-size:14px; 
+        float:left; */
         width:auto;
         max-width: 600px;
 }
