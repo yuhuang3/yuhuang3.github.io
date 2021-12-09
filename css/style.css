@@ -375,7 +375,6 @@ nav ul li a:hover
       /*  font-size:14px; */
         float:center; 
         width:auto;
-        display:block;
         max-width: 600px;
 }
 
@@ -383,7 +382,6 @@ nav ul li a:hover
 {
        /* margin: 120px 0; Yu */
         margin: 70px 0; 
-        display:block;
 }
 .row
 {
