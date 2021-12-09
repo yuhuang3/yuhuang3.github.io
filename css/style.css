@@ -373,9 +373,9 @@ nav ul li a:hover
 { 
         margin: 70px 0px;
       /*  font-size:14px; */
-        float:center; 
+        float:left;
         width:auto;
-        max-width: 600px;
+        max-width: 500px;
 }
 
 #img_columns .column2
@@ -390,6 +390,7 @@ span.a {
         height: 400px;
         padding: 5px;
       }
+      
 .row
 {
         position:relative;
