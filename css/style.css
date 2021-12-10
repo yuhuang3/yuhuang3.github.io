@@ -298,6 +298,11 @@ nav ul li a:hover
         margin-right:-480px;
 }
 
+#spacer1 /* for plaques */
+{
+        margin-bottom:20px;
+}
+
 #spacer2 /* for the first image udacity */
 {
         margin-bottom:230px;
