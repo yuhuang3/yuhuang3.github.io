@@ -203,7 +203,7 @@ nav ul li a:hover
         margin-left:75px;
 }
 
-#slider_content1, #slider_content2, #slider_content3
+#slider_content1, #slider_content2, #slider_content3, #slider_content4 h3
 {
         line-height: 25px;
         font-family: Arial, Helvetica, sans-serif;
@@ -215,7 +215,7 @@ nav ul li a:hover
         z-index:11;
 }
 
-#slider_content1 h3, #slider_content2 h3, #slider_content3 h3
+#slider_content1 h3, #slider_content2 h3, #slider_content3 h3, #slider_content4 h3
 {
         color:#EBE8DE;
         font-size:25px;
@@ -232,7 +232,7 @@ nav ul li a:hover
         display:block;
 }
 
-#slider_content1 p, #slider_content2 p, #slider_content3 p
+#slider_content1 p, #slider_content2 p, #slider_content3 p, #slider_content4 p
 {
         margin:0 0 30px 0;
         color:#4a463b;
