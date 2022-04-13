@@ -328,12 +328,13 @@ nav ul li a:hover
         margin-bottom: 20px;
 }
 /* 4/12/2022: Yu added for saperate  deep learning and NLP*/
-#four_columns h1, #text_columns h1, #text_columns h4
+/* #four_columns h1, #text_columns h1, #text_columns h4
 {
         font-size:20px;
         padding: 20px 0;
         margin-bottom: 20px;
 }
+*/
 #four_columns .img-item
 {
         float:left;
